@@ -15,12 +15,13 @@ namespace ProjecteMarques
 
         public IConfiguration Configuration { get; }
 
+        // Este método se llama en tiempo de ejecución. Usa este método para agregar servicios al contenedor.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddHttpClient();
         }
 
+        // Este método se llama en tiempo de ejecución. Usa este método para configurar el pipeline de solicitudes HTTP.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -44,7 +45,7 @@ namespace ProjecteMarques
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id}");
             });
         }
     }
